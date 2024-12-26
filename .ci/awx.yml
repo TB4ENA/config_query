@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   gather_facts: true
+  connection: local
   vars:
   #
     tower_org: tb4ena
