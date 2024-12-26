@@ -1,4 +1,5 @@
 name: Commit action
+
 on:
   push:
     branches:
@@ -16,11 +17,13 @@ jobs:
 
     runs-on: ubuntu-latest
     concurrency: ${{ github.event.ref }}
-      # env:
-      #   ANSIBLE_HOST_KEY_CHECKING: false
-      # GIT_USERNAME: ${{ secrets.GH_USER }}
-      # GIT_PASSWORD: ${{ secrets.GH_TOKEN }}
     steps:
+      - name: Set environment variables
+        run: |
+          echo "ANSIBLE_HOST_KEY_CHECKING=false" >> $GITHUB_ENV
+          echo "GIT_USERNAME=${{ secrets.GH_USER }}" >> $GITHUB_ENV
+          echo "GIT_PASSWORD=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+
       - uses: actions/checkout@v3
 
       - name: Install pip3
@@ -35,4 +38,4 @@ jobs:
 
       - name: Run integration
         if: github.ref_type == 'branch'
-        run: ansible-playbook -vvv .ci/awx.yml -e git_ref=${{ github.event.ref }}
+        run: ansible-playbook -i localhost, -vvv .ci/awx.yml -e git_ref=${{ github.event.ref }}
