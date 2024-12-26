@@ -1,0 +1,14 @@
+---
+- name: Preparing command
+  set_fact:
+    cli_commands_to_run: "{{ cli_commands_input | default('') | trim }}"
+
+- name: Query config
+  cisco.ios.ios_command:
+    commands:
+      - "{{ cli_commands_to_run }}"
+  register: cli_command_output
+
+- name: Display output
+  debug:
+    msg: "{{ cli_command_output }}"

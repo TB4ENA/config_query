@@ -1,0 +1,17 @@
+{
+    "description": "",
+    "name": "",
+    "spec": [
+        {
+            "question_name": "Config query",
+            "question_description": "Enter CLI command to query config on multiple devices",
+            "variable": "cli_command_input",
+            "type": "text",
+            "min": 3,
+            "max": 256,
+            "required": true,
+            "choices": "",
+            "new_question": true
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+---
+- name: Play to query config from ios devices
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name:Include Role
+      include_role: config_query
