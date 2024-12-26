@@ -4,4 +4,5 @@
   gather_facts: false
   tasks:
     - name: Include Role
-      include_role: config_query
+      include_role:
+        name: config_query
