@@ -16,8 +16,8 @@ jobs:
 
     runs-on: awxdemo
     concurrency: ${{ github.event.ref }}
-    env:
-      ANSIBLE_HOST_KEY_CHECKING: false
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: false
       # GIT_USERNAME: ${{ secrets.GH_USER }}
       # GIT_PASSWORD: ${{ secrets.GH_TOKEN }}
     steps:
