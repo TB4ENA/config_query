@@ -18,8 +18,8 @@ jobs:
     concurrency: ${{ github.event.ref }}
     env:
       ANSIBLE_HOST_KEY_CHECKING: false
-      GIT_USERNAME: ${{ secrets.GH_USER }}
-      GIT_PASSWORD: ${{ secrets.GH_TOKEN }}
+      # GIT_USERNAME: ${{ secrets.GH_USER }}
+      # GIT_PASSWORD: ${{ secrets.GH_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
