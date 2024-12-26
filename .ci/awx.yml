@@ -15,12 +15,12 @@
     prod_cred_list:
       - cisco_ios
       - eveng
-    gh_branch: "{{ git_ref | regex_replace('.*heads','') }}"
-    gh_repo: "{{ lookup('ansible.builtin.env', 'GITHUB_REPOSITORY') | split('/') | last }}"
+    git_branch: "{{ git_ref | regex_replace('.*heads','') }}"
+    git_repo: "{{ lookup('ansible.builtin.env', 'GITHUB_REPOSITORY') | split('/') | last }}"
     commit_author: "{{ lookup('ansible.builtin.env', 'GITHUB_ACTOR') }}"
     commit_sha: "{{ lookup('ansible.builtin.env', 'GITHUB_SHA') }}"
-    gh_url: "https://github.com/{{ lookup('ansible.builtin.env', 'GITHUB_REPOSITORY') }}"
-    gh_event: "{{ lookup('ansible.builtin.env', 'GITHUB_EVENT_NAME') }}"
+    git_url: "https://github.com/{{ lookup('ansible.builtin.env', 'GITHUB_REPOSITORY') }}"
+    git_event: "{{ lookup('ansible.builtin.env', 'GITHUB_EVENT_NAME') }}"
     default_inventory: "Demo Inventory"
     default_cred: "Demo Credential"
     default_exe: "Default execution environment"
@@ -44,14 +44,14 @@
       block:
         - name: Create or update project
           awx.awx.tower_project:
-            name: "{{ gh_repo }}_{{ gh_branch }}"
+            name: "{{ git_repo }}_{{ git_branch }}"
             description: "Commit Author {{ commit_author }} SHA {{ commit_sha }}"
             organization: "{{ tower_org }}"
             scm_update_on_launch: false
             scm_delete_on_update: true
             credential: "{{ scm_cred }}"
             scm_type: git
-            scm_url: "{{ gh_url }}"
+            scm_url: "{{ git_url }}"
             scm_branch: "{{ commit_sha }}"
             timeout: 300
             default_environment: "{{ exe_env | default(default_exe) }}"
@@ -60,11 +60,11 @@
 
         - name: Create or update Job template
           awx.awx.tower_job_template:
-            name: "{{ gh_repo }}_{{ gh_branch }}"
+            name: "{{ git_repo }}_{{ git_branch }}"
             job_type: run
             organization: "{{ tower_org }}"
             inventory: "{{ inventory_to_configure | default(default-inventory) }}"
-            project: "{{ gh_repo }}_{{ gh_branch }}"
+            project: "{{ git_repo }}_{{ git_branch }}"
             playbook: "{{playbook_name | default('playbook.yml')}}"
             credentials: "{{ credlist | default(default_cred)}}"
             verbosity: "{{ verbosity }}"
@@ -86,10 +86,10 @@
       block:
         - name: Delete template
           awx.awx.tower_job_template:
-            name: "{{ gh_repo }}_{{ gh_branch }}"
+            name: "{{ git_repo }}_{{ git_branch }}"
             state: absent
 
         - name: Delete project
           awx.awx.tower_project:
-            name: "{{ gh_repo }}_{{ gh_branch }}"
+            name: "{{ git_repo }}_{{ git_branch }}"
             state: absent
