@@ -14,7 +14,7 @@ jobs:
       TOWER_PASSWORD: ${{ secrets.AWX_TOKEN }}
       TOWER_VERIFY_SSL: false
 
-    runs-on: awxdemo
+    runs-on: ubuntu-latest
     concurrency: ${{ github.event.ref }}
       # env:
       #   ANSIBLE_HOST_KEY_CHECKING: false
