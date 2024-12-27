@@ -6,7 +6,7 @@
   #
     tower_org: tb4ena
     exe_env: ""
-    scm_cred: "Github svc PAT"
+    scm_cred: "gh_svc_pat"
     playbook_name: 'playbook.yml'
     inventory_to_configure: 'demo_inventory'
     # dev_cred_list:
