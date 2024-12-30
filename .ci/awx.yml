@@ -51,12 +51,14 @@
             organization: "{{ tower_org }}"
             scm_update_on_launch: false
             scm_delete_on_update: true
-            credential: "{{ scm_cred }}"
+            # credential: "{{ scm_cred }}"
             scm_type: git
             scm_url: "{{ git_url }}"
             scm_branch: "{{ commit_sha }}"
-            controller_host: "{{ lookup('env', 'AWX_HOST') }}"
-            controller_oauthtoken: "{{ lookup('env', 'AWX_TOKEN') }}"
+            # controller_host: "{{ lookup('env', 'AWX_HOST') }}"
+            controller_host: "awxdev.tb4ena.com"
+            # controller_oauthtoken: "{{ lookup('env', 'AWX_TOKEN') }}"
+            controller_oauthtoken: "4Z4XdkU1hxv6u3To5q0ANTSKR9F3Kg"
             # controller_oauthtoken: controller_oauthtoken
             timeout: 600
             default_environment: "{{ exe_env | default(default_exe) }}"
