@@ -29,10 +29,16 @@ jobs:
       - name: Install Python and pip
         run: |
           sudo apt update
-          sudo apt install -y python3-pip
+          sudo apt install -y python3-pip python3-venv
 
-      - name: Install pip3
-        run: pip3 install -r .github/requirements.txt --force
+      - name: Set up Python Virtual Environment
+        run: |
+          python3 -m venv myenv
+          source myenv/bin/activate
+          pip install -r .github/requirements.txt --force
+
+      # - name: Install pip3
+      #   run: pip3 install -r .github/requirements.txt --force
 
       - name: Install collections
         if: github.ref_type == 'branch'
