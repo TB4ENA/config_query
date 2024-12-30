@@ -5,6 +5,7 @@
   vars:
   #
     tower_org: tb4ena
+    controller_oauthtoken: '4Z4XdkU1hxv6u3To5q0ANTSKR9F3Kg'
     exe_env: ""
     scm_cred: "gh_svc_pat"
     playbook_name: 'playbook.yml'
