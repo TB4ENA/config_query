@@ -70,7 +70,7 @@
             name: "{{ git_repo }}_{{ git_branch }}"
             job_type: run
             organization: "{{ tower_org }}"
-            inventory: "{{ inventory_to_configure | default(default-inventory) }}"
+            inventory: "{{ inventory_to_configure | default(default_inventory) }}"
             project: "{{ git_repo }}_{{ git_branch }}"
             playbook: "{{playbook_name | default('playbook.yml')}}"
             credentials: "{{ credlist | default(default_cred)}}"
