@@ -6,7 +6,7 @@
   #
     tower_org: tb4ena
     controller_oauthtoken: '4Z4XdkU1hxv6u3To5q0ANTSKR9F3Kg'
-    exe_env: ""
+    exe_env: "AWX EE (latest)"
     scm_cred: "gh_svc_pat"
     playbook_name: 'playbook.yml'
     inventory_to_configure: 'demo_inventory'
