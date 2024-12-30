@@ -55,6 +55,7 @@
             scm_type: git
             scm_url: "{{ git_url }}"
             scm_branch: "{{ commit_sha }}"
+            controller_oauthtoken: controller_oauthtoken
             timeout: 600
             default_environment: "{{ exe_env | default(default_exe) }}"
             wait: true
