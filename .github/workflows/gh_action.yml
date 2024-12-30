@@ -44,6 +44,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y ansible
+          sudo pip3 install ansible-lint
 
       - name: Install collections
         if: github.ref_type == 'branch'
@@ -53,7 +54,10 @@ jobs:
           ansible-galaxy collection install -r .github/collections.yml --force
 
       - name: Ansible lint
-        run: ansible-lint playbook.yml --exclude vars/ --exclude defaults/ -c .config/ansible-lint.yml
+        run: |
+          python3 -m venv myenv
+          source myenv/bin/activate
+          ansible-lint playbook.yml --exclude vars/ --exclude defaults/ -c .config/ansible-lint.yml
 
       - name: Run integration
         if: github.ref_type == 'branch'
