@@ -73,7 +73,9 @@
             inventory: "{{ inventory_to_configure | default(default_inventory) }}"
             project: "{{ git_repo }}_{{ git_branch }}"
             playbook: "{{playbook_name | default('playbook.yml')}}"
-            credentials: "{{ credlist | default(default_cred)}}"
+            # credentials: "{{ credlist | default(default_cred)}}"
+            controller_host: "awxdev.tb4ena.com"
+            controller_oauthtoken: "4Z4XdkU1hxv6u3To5q0ANTSKR9F3Kg"
             verbosity: "{{ verbosity }}"
             ask_limit_on_launch: true
             # ask_inventory_on_launch: true
