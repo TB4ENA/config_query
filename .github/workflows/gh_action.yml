@@ -29,7 +29,7 @@ jobs:
       - name: Install Python and pip
         run: |
           sudo apt update
-          sudo apt install -y python3-pip python3-venv
+          sudo apt install -y python3-pip python3-venv ansible-lint
 
       - name: Set up Python Virtual Environment
         run: |
@@ -44,7 +44,6 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y ansible
-          sudo pip3 install ansible-lint
 
       - name: Install collections
         if: github.ref_type == 'branch'
